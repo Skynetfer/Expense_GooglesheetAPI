@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_expense_googsheet_api/google_sheets_api.dart';
-import 'package:flutter_expense_googsheet_api/homepage.dart';
+import 'package:flutter_expense_googsheet_api/main_screen/api/google_sheets_api.dart';
+import 'package:flutter_expense_googsheet_api/main_screen/home_page_screen/homepage.dart';
+
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

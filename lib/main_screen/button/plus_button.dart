@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_expense_googsheet_api/main_screen/button/components/content_button.dart';
 
 class PlusButton extends StatelessWidget {
   final function;
@@ -16,13 +17,11 @@ class PlusButton extends StatelessWidget {
           color: Colors.grey[500],
           shape: BoxShape.circle,
         ),
-        child: Center(
-          child: Text(
-            '+',
-            style: TextStyle(color: Colors.white, fontSize: 25),
-          ),
-        ),
+        child: ContentButton(),
       ),
     );
   }
 }
+
+
+
