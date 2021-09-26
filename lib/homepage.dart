@@ -1,6 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_expense_googsheet_api/google_sheets_api.dart';
+import 'package:flutter_expense_googsheet_api/loading_circle.dart';
+import 'package:flutter_expense_googsheet_api/plus_button.dart';
+import 'package:flutter_expense_googsheet_api/top_card.dart';
+import 'package:flutter_expense_googsheet_api/transaction.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -152,13 +156,13 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 30,
             ),
-            // TopNeuCard(
-            //   balance: (GoogleSheetsApi.calculateIncome() -
-            //           GoogleSheetsApi.calculateExpense())
-            //       .toString(),
-            //   income: GoogleSheetsApi.calculateIncome().toString(),
-            //   expense: GoogleSheetsApi.calculateExpense().toString(),
-            // ),
+            TopNeuCard(
+              balance: (GoogleSheetsApi.calculateIncome() -
+                      GoogleSheetsApi.calculateExpense())
+                  .toString(),
+              income: GoogleSheetsApi.calculateIncome().toString(),
+              expense: GoogleSheetsApi.calculateExpense().toString(),
+            ),
             Expanded(
               child: Container(
                 child: Center(
@@ -167,31 +171,31 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: 20,
                       ),
-                      // Expanded(
-                      //   child: GoogleSheetsApi.loading == true
-                      //       ? LoadingCircle()
-                      //       : ListView.builder(
-                      //           itemCount:
-                      //               GoogleSheetsApi.currentTransactions.length,
-                      //           itemBuilder: (context, index) {
-                      //             return MyTransaction(
-                      //               transactionName: GoogleSheetsApi
-                      //                   .currentTransactions[index][0],
-                      //               money: GoogleSheetsApi
-                      //                   .currentTransactions[index][1],
-                      //               expenseOrIncome: GoogleSheetsApi
-                      //                   .currentTransactions[index][2],
-                      //             );
-                      //           }),
-                      // )
+                      Expanded(
+                        child: GoogleSheetsApi.loading == true
+                            ? LoadingCircle()
+                            : ListView.builder(
+                                itemCount:
+                                    GoogleSheetsApi.currentTransactions.length,
+                                itemBuilder: (context, index) {
+                                  return MyTransaction(
+                                    transactionName: GoogleSheetsApi
+                                        .currentTransactions[index][0],
+                                    money: GoogleSheetsApi
+                                        .currentTransactions[index][1],
+                                    expenseOrIncome: GoogleSheetsApi
+                                        .currentTransactions[index][2],
+                                  );
+                                }),
+                      )
                     ],
                   ),
                 ),
               ),
             ),
-            // PlusButton(
-            //   function: _newTransaction,
-            // ),
+            PlusButton(
+              function: _newTransaction,
+            ),
           ],
         ),
       ),
