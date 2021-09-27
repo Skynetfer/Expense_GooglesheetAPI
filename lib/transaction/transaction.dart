@@ -20,42 +20,47 @@ class MyTransaction extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(15),
           color: Colors.grey[100],
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.grey[500]),
-                    child: Center(
-                      child: Icon(
-                        Icons.attach_money_outlined,
-                        color: Colors.white,
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.grey[500]),
+                      child: Center(
+                        child: Icon(
+                          Icons.attach_money_outlined,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(transactionName,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      transactionName,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey[700],
-                      )),
-                ],
-              ),
-              Text(
-                (expenseOrIncome == 'expense' ? '-' : '+') + '\$' + money,
-                style: TextStyle(
-                  //fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color:
-                      expenseOrIncome == 'expense' ? Colors.red : Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                Text(
+                  (expenseOrIncome == 'expense' ? '-' : '+') + '\$' + money,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: expenseOrIncome == 'expense'
+                        ? Colors.red
+                        : Colors.green,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

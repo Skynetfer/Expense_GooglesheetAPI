@@ -1,23 +1,25 @@
 import 'dart:async';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expense_googsheet_api/main_screen/api/google_sheets_api.dart';
 import 'package:flutter_expense_googsheet_api/main_screen/button/plus_button.dart';
 import 'package:flutter_expense_googsheet_api/main_screen/card/top_card.dart';
+import 'package:flutter_expense_googsheet_api/main_screen/home_screen/components/list_items_bottom_bar.dart';
 import 'package:flutter_expense_googsheet_api/main_screen/loading_layout/loading_circle.dart';
 import 'package:flutter_expense_googsheet_api/transaction/transaction.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
-  // collect user input
+class _HomeScreenState extends State<HomeScreen> {
   final _textcontrollerAMOUNT = TextEditingController();
   final _textcontrollerITEM = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final int _index = 0;
   bool _isIncome = false;
 
   // enter the new transaction into the spreadsheet
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  // new transaction
+  // add new transaction
   void _newTransaction() {
     showDialog(
         barrierDismissible: false,
@@ -149,7 +151,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // start loading until the data arrives
     if (GoogleSheetsApi.loading == true && timerHasStarted == false) {
       startLoading();
     }
@@ -205,6 +206,19 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: Colors.white,
+        backgroundColor: (Colors.grey[300])!,
+        animationDuration: Duration(seconds: 1),
+        animationCurve: Curves.bounceOut,
+        items: ItemInBottomBar,
+        index: _index,
+        onTap: (index) {
+          setState(() {
+            index = _index;
+          });
+        },
       ),
     );
   }

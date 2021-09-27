@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expense_googsheet_api/main_screen/api/google_sheets_api.dart';
-import 'package:flutter_expense_googsheet_api/main_screen/home_page_screen/homepage.dart';
-
-
+import 'package:flutter_expense_googsheet_api/main_screen/home_screen/homescreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: HomeScreen(),
     );
   }
 }
